@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Pixena — GitHub SPA</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="icons/github.svg">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+</head>
+<body>
+  <div id="github-anim">
+    <img class="logo" src="icons/github.svg" alt="GitHub">
+  </div>
+  <div id="app">
+    <header class="main-header">
+      <div class="header-left">
+        <div class="logo"><img src="icons/github.svg" alt="GitHub"></div>
+        <span class="site-title">Pixena GitHub SPA</span>
+      </div>
+      <nav>
+        <a href="#" data-page="home" class="active" onclick="route('home')">Главная</a>
+        <a href="#" data-page="about" onclick="route('about')">Обо мне</a>
+        <a href="#" data-page="portfolio" onclick="route('portfolio')">Портфолио</a>
+        <a href="#" data-page="contacts" onclick="route('contacts')">Контакты</a>
+      </nav>
+      <button id="hints-btn" title="Показать фишки" onclick="showHints()">
+        <img src="icons/idea.svg" alt="Подсказки" style="width:2em;height:2em;">
+      </button>
+    </header>
+    <main>
+      <section id="home" class="page" style="display:block;">
+        <div class="hero">
+          <div class="hero-content">
+            <div class="hero-avatar-wrap" onclick="zoomAvatar()">
+              <img src="icons/github.svg" alt="Pixena" class="hero-avatar" id="main-avatar">
+              <span class="avatar-zoom-hint">🔍</span>
+            </div>
+            <div>
+              <h1>Pixena</h1>
+              <h2 id="user-bio">Fullstack Developer, Open Source Enthusiast</h2>
+              <p id="user-desc">Загрузка...</p>
+              <div class="hero-links">
+                <a href="#" onclick="route('portfolio')">Портфолио</a>
+                <a href="#" onclick="route('about')">Обо мне</a>
+                <a href="#" onclick="route('contacts')">Контакты</a>
+                <!--<a href="#" onclick="route('blog')">Блог</a>-->
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="section-title">Мои репозитории</div>
+        <div id="repo-list" class="repo-list"></div>
+      </section>
+      <section id="about" class="page" style="display:none">
+        <div class="about-banner">
+          <div class="about-avatar-anim">
+            <img id="about-avatar" src="icons/github.svg" alt="Avatar">
+          </div>
+          <div class="about-main-info">
+            <h2 id="about-name">Pixena</h2>
+            <div id="about-location" class="about-location"></div>
+            <div id="about-bio" class="about-bio"></div>
+            <div class="about-stats">
+              <span id="about-repos"></span>
+              <span id="about-followers"></span>
+              <span id="about-following"></span>
+            </div>
+            <div class="about-langs" id="about-langs"></div>
+          </div>
+        </div>
+        <div class="about-extra">
+          <div>
+            <h3>Навыки</h3>
+            <ul id="about-skills">
+
+            </ul>
+          </div>
+          <div>
+            <h3>Интересы</h3>
+            <ul id="about-interests">
+
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section id="portfolio" class="page" style="display:none">
+        <div class="section-title">Портфолио</div>
+        <div class="portfolio-list" id="portfolio-list">
+
+        </div>
+      </section>
+      <section id="contacts" class="page" style="display:none">
+        <div class="section-title">Контакты</div>
+
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div class="footer-content">
+        <span>© 2025 Pixena</span>
+        <span>Open Source • <a href="https://github.com/Pixena" target="_blank">GitHub</a></span>
+        <span>Сайт обновлен: <span id="footer-date"></span></span>
+      </div>
+    </footer>
+  </div>
+  <div id="hints-modal" class="hints-modal" style="display:none;">
+    <div class="hints-content">
+      <button class="close-btn" onclick="closeHints()">×</button>
+      <h2>Фишки сайта</h2>
+      <ul>
+        <li>👁️ Кнопка-глазик — предпросмотр файлов репозитория без перехода на GitHub</li>
+        <li>📂 Просмотр структуры проекта прямо в модальном окне</li>
+        <li>📦 Кнопка "Скачать .rar" — скачайте все репозитории одним архивом</li>
+        <li>🖼️ Клик по аватару — увеличит фото</li>
+        <li>⚡ Быстрая навигация по разделам без перезагрузки страницы</li>
+        <li>🌙 Адаптивный дизайн для любых устройств</li>
+        <li>🎨 Красивые анимации и интерактивные карточки</li>
+        <li>🔗 Кликабельные контакты с баннерами</li>
+        <li>📝 "Обо мне" — данные с GitHub, анимации, статистика</li>
+        <li>💡 Кнопка "Подсказки" — всегда в углу сайта</li>
+      </ul>
+    </div>
+  </div>
+  <div id="avatar-modal" class="avatar-modal" style="display:none;">
+    <div class="avatar-modal-content">
+      <button class="close-btn" onclick="closeAvatarModal()">×</button>
+      <img id="zoomed-avatar" src="icons/github.svg" alt="Avatar" style="max-width:90vw;max-height:80vh;">
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
